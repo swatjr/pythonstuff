@@ -1,0 +1,58 @@
+#find cheapest shipping method based on 
+#ground shipping
+#Weight of Package 	Price per Pound 	Flat Charge
+#2 lb or less 	$1.50 	$20.00
+#Over 2 lb but less than or equal to 6 lb 	$3.00 	$20.00
+#Over 6 lb but less than or equal to 10 lb 	$4.00 	$20.00
+#Over 10 lb 	$4.75 	$20.00
+#drone shipping
+#Weight of Package 	Price per Pound 	Flat Charge
+#2 lb or less 	$4.50 	$0.00
+#Over 2 lb but less than or equal to 6 lb 	$9.00 	$0.00
+#Over 6 lb but less than or equal to 10 lb 	$12.00 	$0.00
+#Over 10 lb 	$14.25 	$0.00
+#premium 125 flat fee
+#
+#
+
+
+
+def groundcost(weight):
+  if weight <= 2:
+    cost = weight *1.50 + 20
+    return cost
+  elif (weight >2) and (weight <= 6):
+    cost = weight *3.00 +20
+    return cost
+  elif (weight >6) and (weight <=10):
+    cost = weight *4.00 + 20
+    return cost
+  else:
+    cost = weight * 4.75 +20
+    return cost
+premiumground = 125
+def dronecost(weight):
+  if weight <= 2:
+    cost = weight *4.5 + 0
+    return cost
+  elif (weight >2) and (weight <= 6):
+    cost = weight * 9.00 +0
+    return cost
+  elif (weight >6) and (weight <=10):
+    cost = weight *12.00 + 0
+    return cost
+  else:
+    cost = weight * 14.25 + 0
+    return cost
+def cheapest(weight):
+  ground = groundcost(weight)
+  drone = dronecost(weight)
+  premium = premiumground
+  if (ground < drone) and (ground < premium):
+    return "The cheapest way to ship a " + str(weight) + " package is using ground shipping and it will cost" + str(ground)
+  elif (drone < ground )and (drone < premium):
+      return "The cheapest way to ship a " + str(weight) + " package is using drone shipping and it will cost" + str(drone)
+  else:
+    return "The cheapest way to ship a " + str(weight) + " package is using premium ground shipping and it will cost " + str(premium)
+print(cheapest(41.5))
+    
